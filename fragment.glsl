@@ -1,15 +1,13 @@
-#version 330 core
-#ifdef GL_FRAGMENT_PRECISION_HIGH
+#version 460
 precision highp float;
-#else
-precision mediump float;
-#endif
 
 uniform vec2 resolution;
 uniform vec2 pos;
 uniform float scale;
 
-#define MAX_ITERATIONS 400
+layout(location=0) out vec4 FragColor;
+
+#define MAX_ITERATIONS 300
 
 int get_iterations()
 {
@@ -28,7 +26,7 @@ int get_iterations()
 
         float dist = real * real + imag * imag;
 
-        if (dist > 4.0)
+        if (dist > 2.0)
         break;
 
         ++iterations;
@@ -49,6 +47,6 @@ vec4 return_color()
 }
 
 void main(void) {
-    gl_FragColor = return_color();
+    FragColor = return_color();
     //gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }
