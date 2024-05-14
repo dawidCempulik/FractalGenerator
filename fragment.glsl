@@ -26,7 +26,7 @@ int get_iterations()
 
         float dist = real * real + imag * imag;
 
-        if (dist > 2.0)
+        if (dist > 4.0)
         break;
 
         ++iterations;
